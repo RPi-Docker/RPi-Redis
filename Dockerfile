@@ -3,6 +3,8 @@ FROM resin/armv7hf-debian-qemu
 
 MAINTAINER Jannis Schaefer <j.schaefer@estwx.de>
 
+RUN [ "cross-build-start" ]
+
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r redis && useradd -r -g redis redis
 
@@ -40,6 +42,8 @@ RUN buildDeps='gcc libc6-dev make'; \
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
+
+RUN [ "cross-build-end" ]
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
