@@ -45,10 +45,10 @@ RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
-RUN [ "cross-build-end" ]
-
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 6379
 CMD [ "redis-server" ]
+
+RUN [ "cross-build-end" ]
