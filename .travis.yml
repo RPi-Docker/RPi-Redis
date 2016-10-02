@@ -11,5 +11,5 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push rpidocker/rpi-couchdb;
+      docker push rpidocker/rpi-redis;
     fi
